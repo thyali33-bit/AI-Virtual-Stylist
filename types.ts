@@ -2,10 +2,17 @@
 import type { ReactNode } from 'react';
 
 export interface StyleSelection {
+  clothing: boolean;
   hairstyle: boolean;
   makeup: boolean;
-  jewelry: boolean;
-  clothing: boolean;
+  glasses: boolean;
+  earrings: boolean;
+  necklace: boolean;
+  watchBracelet: boolean;
+  shoesSocks: boolean;
+  hat: boolean;
+  tattoo: boolean;
+  handbag: boolean; // Thêm tùy chọn Túi xách
 }
 
 export interface RefinementSelection {

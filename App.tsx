@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { GoogleGenAI, Modality } from '@google/genai';
 
@@ -29,10 +28,17 @@ const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const [styleSelection, setStyleSelection] = useState<StyleSelection>({
+    clothing: false,
     hairstyle: true,
     makeup: true,
-    jewelry: false,
-    clothing: false,
+    glasses: false,
+    earrings: false,
+    necklace: false,
+    watchBracelet: false,
+    shoesSocks: false,
+    hat: false,
+    tattoo: false,
+    handbag: false, // Thêm tùy chọn Túi xách
   });
 
   const [refinementSelection, setRefinementSelection] = useState<RefinementSelection>({
@@ -42,10 +48,17 @@ const App: React.FC = () => {
   });
 
   const styleLabels: Record<keyof StyleSelection, string> = {
+    clothing: 'Quần áo',
     hairstyle: 'Kiểu tóc',
     makeup: 'Trang điểm',
-    jewelry: 'Trang sức',
-    clothing: 'Quần áo',
+    glasses: 'Mắt kính',
+    earrings: 'Bông tai',
+    necklace: 'Vòng cổ',
+    watchBracelet: 'Đồng hồ / Vòng tay',
+    shoesSocks: 'Giày + tất',
+    hat: 'Mũ / Nón',
+    tattoo: 'Hình xăm',
+    handbag: 'Túi xách', // Thêm nhãn cho Túi xách
   };
 
   const handleStyleSelectionChange = (key: keyof StyleSelection) => {
@@ -107,7 +120,7 @@ const App: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [characterImage, styleImage, styleSelection]);
+  }, [characterImage, styleImage, styleSelection, styleLabels]); // Thêm styleLabels vào dependency array
 
   const handleRefine = useCallback(async () => {
     if (!generatedImage) return;
