@@ -1,0 +1,5 @@
+{
+  "name": "AI Virtual Stylist",
+  "description": "Upload a portrait and a style reference image to apply hairstyles, makeup, and accessories using AI. Further refine the look with custom colors and sunglasses.",
+  "requestFramePermissions": []
+}
